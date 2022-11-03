@@ -12,12 +12,19 @@ function pickRyjec() {
 function generateRandomRyjecMeta() {
     let ryjec = pickRyjec();
     let ryjecPath = `./img/${ryjec}.png`;
-    document.metaImage = ryjecPath;
-    document.metaTitle = `dzisiaj daily prowadzi ${ryjec}`;
-    let metaImage = document.getElementsByTagName('meta').namedItem('og:image');
-    !!metaImage && metaImage.setAttribute('content', ryjecPath);
-    let metaTitle = document.getElementsByTagName('meta').namedItem('og:title');
-    !!metaTitle && metaTitle.setAttribute('content', `dzisiaj daily prowadzi ${ryjec}`);
+    setMetaTag('og:image', ryjecPath);
+    setMetaTag('og:title', `dzisiaj daily prowadzi ${ryjec}`);
+}
+
+function setMetaTag(itemName, content) {
+    let allMetaElements = document.getElementsByTagName('meta');
+    for (let i = 0; i < allMetaElements.length; i++) { 
+        if (allMetaElements[i].getAttribute('property') == itemName) { 
+            allMetaElements[i].setAttribute('content', content); 
+            break;
+        } 
+    } 
+    allMetaElements = document.getElementsByTagName('meta');
 }
 
 generateRandomRyjecMeta();
