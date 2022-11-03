@@ -26,6 +26,10 @@ function setMetaTag(itemName, content) {
     }
 }
 
+function getRyjecPath(ryjec) {
+    return `img/${ryjec}.png`;
+};
+
 var w1 = [];
 var w2 = [];
 $.ajaxSetup({
@@ -43,7 +47,7 @@ var los3 = true;
 var time = 0;
 var modal = document.getElementById('myModal');
 var modal_close = document.getElementsByClassName("close")[0];
-var losowania = 0;
+var draws_count = 1;
 var specjalne = 0;
 var volume = 1;
 
@@ -55,7 +59,7 @@ var p1 = document.getElementById("p1");
 var p2 = document.getElementById("p2");
 var p3 = document.getElementById("p3");
 var ryjceDiv = document.getElementById("ryjce");
-var ryjceLabelDiv = document.getElementById("ryjceLabel");
+var ryjceListDiv = document.getElementById("ryjceList");
 var progress = document.getElementById("progress");
 
 if (localStorage.volume) {
@@ -63,8 +67,7 @@ if (localStorage.volume) {
     document.getElementById("volume").value = volume;
     setVolume(volume);
 }
-if (localStorage.losowania) {
-    losowania = Number(localStorage.losowania);
+if (localStorage.draws_count) {
     specjalne = Number(localStorage.specjalne);
 }
 var started = false;
@@ -109,18 +112,23 @@ function losu_start() {
 }
 
 function setRyjec(ryjec) {
-    let ryjecPath = `img/${ryjec}.png`;
+    let ryjecPath = getRyjecPath(ryjec);
     setMetaTag('og:image', `./${ryjecPath}`);
     setMetaTag('og:title', `dzisiaj daily prowadzi ${ryjec}`);
     ryjceDiv.innerHTML = `daily prowadzi: <img height='100px' class='shadowed' src='${ryjecPath}'/>`;
 }
 
-function setRyjecNameLabel(ryjec) {
-    ryjceLabelDiv.innerHTML = ryjec;
+function pushRyjecToHistory(ryjec) {
+    let ryjecPath = getRyjecPath(ryjec);
+    let currentDate = new Date();
+    ryjceListDiv.innerHTML += `
+        <img height="25px" src="${ryjecPath}" />
+        ${draws_count}. ${ryjec} - ${currentDate.toLocaleTimeString()}
+        </br>
+    `;
 }
 
 function losowanko() {
-    ryjceLabelDiv.innerHTML = '';
     a2.play();
 
     if (los1) {
@@ -152,14 +160,14 @@ function losowanko() {
         setTimeout(losowanko, lottSpeed);
     }
     else {
-        setRyjecNameLabel(ryjec);
+        pushRyjecToHistory(ryjec);
         progress.innerHTML = "losowanko zakonczone, jeszcze raz?";
         a3.play();
         a2.pause();
         a2.currentTime = 0;
         started = false;
-        losowania += 1;
-        localStorage.losowania = losowania;
+        draws_count += 1;
+        localStorage.draws_count = draws_count;
         localStorage.specjalne = specjalne;
     }
 }
