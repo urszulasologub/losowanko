@@ -16,16 +16,7 @@
     </script>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>maszyna losujaca tv gry</title>
-    <meta
-      name="description"
-      content="legendarna maszyna losujaca teraz dostepna w przegladarce. wylosuj swoj temat, udostępnij go znajomym, redakcji TVGRY, wykorzystaj go jako temat na swoj filmik lub po prostu nic z nim nie rob (najlepiej)."
-    />
-    <meta
-      name="keywords"
-      content="HTML,CSS,XML,JavaScript,Klocuch,klo,cuch,tvgry,losu,losowanko,dzyn,maszyna,szef,hed,jordan,gierki,recenzje,gry,wideorecenzje,video,games,pc,tematy,filmiki"
-    />
-    <meta name="author" content="xar" />
+    <title>maszyna losujaca</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -63,12 +54,9 @@
           <div id="screen">
             <p class="header">losowanie</p>
             <div class="row">
-              <div class="one-third column box"><div id="b1"></div></div>
-              <div class="one-third column box"><div id="b2"></div></div>
-              <div class="one-third column box"><div id="b3"></div></div>
               <div class="row">
                 <p id="ryjce">
-                  temacik dla:
+                  daily prowadzi:
                   <img height="100px" src="img/kto.png" class="shadowed" />
                 </p>
               </div>
@@ -87,41 +75,6 @@
                 </div>
               </div>
               <p id="progress">czekanko - kliknij 'losuj'</p>
-              <div>
-                <button
-                  title="Podgląd"
-                  type="button"
-                  onclick="preview()"
-                  class="btn-foo"
-                >
-                  <i class="fas fa-search"></i>
-                </button>
-                <button
-                  title="Zapisz na dysku"
-                  type="button"
-                  onclick="download()"
-                  class="btn-foo"
-                >
-                  <i class="fa fa-download"></i>
-                </button>
-                <a href="https://discord.gg/r7Z6W86"
-                  ><button
-                    title="Discord"
-                    type="button"
-                    onclick=""
-                    class="btn-foo"
-                  >
-                    <i class="fab fa-discord"></i></button
-                ></a>
-                <button
-                  title="o stronie"
-                  type="button"
-                  onclick="info()"
-                  class="btn-foo"
-                >
-                  <i class="fas fa-info"></i>
-                </button>
-              </div>
               <div class="volbox">
                 <i class="fas fa-volume-up"></i>
                 <input
@@ -135,9 +88,6 @@
                   onchange="setVolume(this.value)"
                 />
               </div>
-              <p id="footer">
-                to jest na zarty - inspirowane twórczością klocucha
-              </p>
             </div>
           </div>
         </div>
@@ -147,53 +97,6 @@
               <p class="header">twoje statystyki</p>
               <p id="stats"></p>
             </div>
-            <div class="wrapper">
-              <iframe
-                src="https://discordapp.com/widget?id=479582720649854977&theme=dark"
-                width="100%"
-                height="480"
-                allowtransparency="true"
-                frameborder="0"
-              ></iframe>
-            </div>
-          </div>
-          <div class="one-half column">
-            <div class="wrapper">
-              <p class="header">losuTV</p>
-              <iframe
-                width="100%"
-                height="360"
-                src="https://www.youtube.com/embed/4dA7bma0mTw"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="wrapper">
-              <p class="header">polecane kanały</p>
-              <script src="https://apis.google.com/js/platform.js"></script>
-              <div
-                class="g-ytsubscribe"
-                data-channel="KlocuchRecenzje"
-                data-layout="full"
-                data-count="hidden"
-                data-theme="dark"
-              ></div>
-              <div
-                class="g-ytsubscribe"
-                data-channelid="UCMrrHY0GsiLb_6OeynONJfQ"
-                data-layout="full"
-                data-count="hidden"
-                data-theme="dark"
-              ></div>
-              <div
-                class="g-ytsubscribe"
-                data-channel="TVGRYpl"
-                data-layout="full"
-                data-count="hidden"
-                data-theme="dark"
-              ></div>
-            </div>
           </div>
         </div>
         <div class="wrapper">
@@ -202,7 +105,7 @@
             new Date().getFullYear() > 2010 &&
               document.write(new Date().getFullYear());
           </script>
-          , xar.
+          , Forked from <a href="https://github.com/XarPL/losowanie-tv-gry">xar</a>.
         </div>
       </div>
       <audio id="a1">
@@ -222,18 +125,6 @@
     <audio id="a4">
       <source src="sounds/tmsll.mp3" type="audio/mpeg" />
     </audio>
-
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <div class="modal-content" id="img01">
-        <h1>o maszynie</h1>
-        legendarna maszyna losujaca teraz dostepna w przegladarce. wylosuj swoj
-        temat, udostępnij go znajomym, redakcji TVGRY, wykorzystaj go jako temat
-        na swoj filmik lub po prostu nic z nim nie rob (najlepiej) #gierki
-        #tvgry #klocuch #losulosu #losowanko
-      </div>
-      <div id="caption"></div>
-    </div>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"

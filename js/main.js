@@ -28,9 +28,6 @@ var a1 = document.getElementById("a1");
 var a2 = document.getElementById("a2");
 var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
-var b1 = document.getElementById("b1");
-var b2 = document.getElementById("b2");
-var b3 = document.getElementById("b3");
 var p1 = document.getElementById("p1");
 var p2 = document.getElementById("p2");
 var p3 = document.getElementById("p3");
@@ -71,7 +68,7 @@ function setVolume(value) {
 function info() {
     modal.style.display = "block";
     var div = document.getElementById("img01");
-    document.getElementById("img01").innerHTML = "<div id='about'><h1>o maszynie</h1>legendarna maszyna losujaca teraz dostepna w przegladarce. wylosuj swoj temat, udostępnij go znajomym, redakcji TVGRY, wykorzystaj go jako temat na swoj filmik lub po prostu nic z nim nie rob (najlepiej). #gierki #tvgry #klocuch #losulosu #losowanko</div><h1>tworcy maszyny</h1><ul style='list-style-type:square'><li>ksar - projekt i wykonanie</li><li><a href='https://www.facebook.com/Andrewblage/?ref=bookmarks' target='_blank'>andrju blejdz</a> - pomysl, testy</li><li>ołgon - specjalista ds. rozwoju oprogramowania, testy</li><li>oleła - specjalistka ds. rozrywki, testy z duzym napracowaniem</li><li>tomczak - specjalista ds. zabezpieczen i naduzyc, testy</li><li><a href='https://szymonzak.ovh/' target='_blank'>szmyk</a> - qa engineer</li></ul><h1>podziekowania</h1><ul style='list-style-type:square'><li>Klocuch - inspiracja, dublaż</li><i>Glos klocucha zostal wykorzystany za jego zgoda</i><li>Redakcja TVGRY - inspiracja</li><li>Todd Howard - za wszystkie slodkie klamstwa</li><li>Zespół SoulFire - testy</li><i>lubisz grę Gothic? Sprawdź ich projekt! <a href='https://kronikimyrtany.pl/' target='_blank'>[LINK]</a></i></ul><h1>wsparcie</h2><ul>Kontakt / Dotacje Paypal: stormtrooper69pl@gmail.com<br /><span style='font-size:x-small;'>pieniądze z dotacji będą przeznaczone na utrzymanie strony oraz zakup pićka i gum do żucia (nie lambady)";
+    document.getElementById("img01").innerHTML = "<div id='about'><h1>o maszynie</h1>legendarna maszyna losujaca teraz dostepna w przegladarce";
     document.getElementById("caption").innerHTML = "";
 }
 
@@ -91,9 +88,6 @@ function losu_start() {
         a4.pause();
         a3.currentTime = 0;
         a4.currentTime = 0;
-        b1.innerHTML = "";
-        b2.innerHTML = "";
-        b3.innerHTML = "";
         a1.play();
         lottSpeed = 50;
         lottTime = 600;
@@ -113,27 +107,14 @@ function losowanko() {
 
     if (los1)
 	{
-        b1.innerHTML = Math.floor(getRandomArbitrary(2, 11));
 		p1.style.width = (time/80)*100 + "%";
 	}
     if (los2)
 	{
-        if (b1.innerHTML == 3) {
-            if (Math.floor(getRandomArbitrary(0, 10)) == 1) {
-                b2.innerHTML = "wiedzmin 3";
-            }
-            else {
-                b2.innerHTML = w1[Math.floor(getRandomArbitrary(0, w1.length))];
-            }
-        }
-        else {
-            b2.innerHTML = w1[Math.floor(getRandomArbitrary(0, w1.length))];
-        }
 		p2.style.width = ((time-80)/20)*100 + "%";
 	}
     if (los3)
 	{
-        b3.innerHTML = w2[Math.floor(getRandomArbitrary(0, w2.length))];
 		p3.style.width = ((time-100)/20)*100 + "%";
 	}
     ryjceDiv.innerHTML = "temacik dla: <img height='100px' class='shadowed' src='img/" + ryjce[Math.floor(getRandomArbitrary(0, ryjce.length))] + ".png'/>";
@@ -159,86 +140,7 @@ function losowanko() {
     }
     else {
         progress.innerHTML = "losowanko zakonczone, jeszcze raz?";
-        if (b2.innerHTML == w1[7] && b3.innerHTML == w2[21]) {
-            a4.src = "sounds/tmsll.mp3"
-            a4.play();
-
-            progress.innerHTML = "specjal napędził: Todd Howard <br />oryginał: <a href='https://www.youtube.com/watch?v=yvGXCisAaR4'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == w1[25] && b3.innerHTML == w2[35]) {
-            a4.src = "sounds/roltest.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klejnot Nilu & Testoviron <br />oryginał: <a href='https://www.youtube.com/watch?v=4kbpssHwqYc'>Link do YT [+18]</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b1.innerHTML == 5 && b2.innerHTML == w1[0] && b3.innerHTML == w2[0]) {
-            a4.src = "sounds/cytryny.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=H6qsJcALHkM'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == w1[36]) {
-            ryjceDiv.innerHTML = "temacik dla: <img height='100px' class='shadowed' src='img/szef.png' />";
-            a4.src = "sounds/tonasiebie.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=H6qsJcALHkM'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == w1[1]) {
-            ryjceDiv.innerHTML = "temacik dla: <img height='100px' class='shadowed' src='img/jordan.png' />";
-            a4.src = "sounds/chinskie.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=H6qsJcALHkM'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == "wiedzmin 3") {
-            b3.innerHTML = "najlepszy"
-            a4.src = "sounds/3w3.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=H6qsJcALHkM'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == w1[40] && b3.innerHTML == w2[68]) {
-            a4.src = "sounds/to.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Husson Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=sS3xkUyqyUQ'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else if (b2.innerHTML == w1[42] && b3.innerHTML == w2[100]) {
-            ryjceDiv.innerHTML = "temacik dla: <img height='100px' class='shadowed' src='img/kacper.png />";
-            a4.src = "sounds/kruci.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=sS3xkUyqyUQ'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-		else if (b2.innerHTML == w1[59] && b3.innerHTML == w2[104]) {
-            a4.src = "sounds/jg.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=lwJMwKgejng'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-		else if (b2.innerHTML == w1[58] && b3.innerHTML == w2[105]) {
-            a4.src = "sounds/natsp.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=lwJMwKgejng'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-		else if (b3.innerHTML == w2[112]) {
-            a4.src = "sounds/cwiercz.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Klo Cuch <br />oryginał: <a href='https://www.youtube.com/watch?v=rxlqV0f4us0'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-		else if (b3.innerHTML == w2[92]) {
-            a4.src = "sounds/gin.mp3"
-            a4.play();
-            progress.innerHTML = "specjal napędził: Kistru ft Kaktus & Gothic <br />oryginał: <a href='https://www.youtube.com/watch?v=y_ifjEYEMuY'>Link do YT</a><br />losowanko zakonczone, jeszcze raz?";
-            specjalne += 1;
-        }
-        else {
-            a3.play();
-        }
+        a3.play();
         a2.pause();
         a2.currentTime = 0;
         started = false;
