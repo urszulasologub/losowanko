@@ -100,7 +100,7 @@ function pickRyjec() {
 }
 
 function setRyjecLabel(ryjec) {
-    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjec + ".png'/>";
+    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjec.toLowerCase() + ".png'/>";
 }
 
 function setRyjecNameLabel(ryjec) {
