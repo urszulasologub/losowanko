@@ -1,10 +1,27 @@
-﻿function getRandomArbitrary(min, max) {
+﻿var ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
+
+function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function pickRyjec() {
+    let ryjceIndex = Math.floor(getRandomArbitrary(0, ryjce.length));
+    return ryjce[ryjceIndex];
+}
+
+function generateRandomRyjecMeta() {
+    let ryjec = pickRyjec();
+    let ryjecPath = `./img/${ryjec}.png`;
+    let metaImage = document.getElementsByTagName('meta').namedItem('og:image');
+    !!metaImage && metaImage.setAttribute('content', ryjecPath);
+    let metaTitle = document.getElementsByTagName('meta').namedItem('og:title');
+    !!metaTitle && metaTitle.setAttribute('content', `dzisiaj daily prowadzi ${ryjec}`);
+}
+
+generateRandomRyjecMeta();
+
 var w1 = [];
 var w2 = [];
-var ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
 $.ajaxSetup({
     async: false
 });
@@ -84,34 +101,12 @@ function losu_start() {
     };
 }
 
-function generateImage() {
-    losu_start();
-    document.getElementById("img01").innerHTML = "";
-    html2canvas(document.getElementById("machine")).then(canvas => {
-        canvas.toBlob(function (blob) {
-            saveAs(blob, "losowanko_" + losowania + ".png");
-        });
-    });
-}
-
-function pickRyjec() {
-    let ryjceIndex = Math.floor(getRandomArbitrary(0, ryjce.length));
-    return ryjec = ryjce[ryjceIndex];
-}
-
 function setRyjecLabel(ryjec) {
-    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjec.toLowerCase() + ".png'/>";
+    ryjceDiv.innerHTML = `daily prowadzi: <img height='100px' class='shadowed' src='img/${ryjec.toLowerCase()}.png'/>`;
 }
 
 function setRyjecNameLabel(ryjec) {
     ryjceDiv.innerHTML += `<div class="row"><p>${ryjec}</p></div>`;
-}
-
-function generateRyjecMetaImage() {
-    console.log('test');
-    let ryjec = pickRyjec();
-    setRyjecLabel(ryjec);
-    setRyjecNameLabel(ryjec);
 }
 
 function losowanko() {
@@ -126,7 +121,8 @@ function losowanko() {
     if (los3) {
         p3.style.width = ((time - 100) / 20) * 100 + "%";
     }
-    setRyjecLabel(pickRyjec());
+    let ryjec = pickRyjec();
+    setRyjecLabel(ryjec);
     time += 1;
     if (time == 80) {
         p1.style.width = "100%";
@@ -156,6 +152,7 @@ function losowanko() {
         localStorage.specjalne = specjalne;
     }
 }
+
 modal_close.onclick = function () {
     modal.style.display = "none";
 }
