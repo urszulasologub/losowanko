@@ -55,6 +55,7 @@ var p1 = document.getElementById("p1");
 var p2 = document.getElementById("p2");
 var p3 = document.getElementById("p3");
 var ryjceDiv = document.getElementById("ryjce");
+var ryjceLabelDiv = document.getElementById("ryjceLabel");
 var progress = document.getElementById("progress");
 
 if (localStorage.volume) {
@@ -107,15 +108,19 @@ function losu_start() {
     };
 }
 
-function setRyjecLabel(ryjec) {
-    ryjceDiv.innerHTML = `daily prowadzi: <img height='100px' class='shadowed' src='img/${ryjec.toLowerCase()}.png'/>`;
+function setRyjec(ryjec) {
+    let ryjecPath = `img/${ryjec}.png`;
+    setMetaTag('og:image', `./${ryjecPath}`);
+    setMetaTag('og:title', `dzisiaj daily prowadzi ${ryjec}`);
+    ryjceDiv.innerHTML = `daily prowadzi: <img height='100px' class='shadowed' src='${ryjecPath}'/>`;
 }
 
 function setRyjecNameLabel(ryjec) {
-    ryjceDiv.innerHTML += `<div class="row"><p>${ryjec}</p></div>`;
+    ryjceLabelDiv.innerHTML = ryjec;
 }
 
 function losowanko() {
+    ryjceLabelDiv.innerHTML = '';
     a2.play();
 
     if (los1) {
@@ -128,7 +133,7 @@ function losowanko() {
         p3.style.width = ((time - 100) / 20) * 100 + "%";
     }
     let ryjec = pickRyjec();
-    setRyjecLabel(ryjec);
+    setRyjec(ryjec);
     time += 1;
     if (time == 80) {
         p1.style.width = "100%";
