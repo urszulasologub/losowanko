@@ -45,16 +45,6 @@ if (localStorage.losowania) {
 }
 var started = false;
 
-function download() {
-
-    document.getElementById("img01").innerHTML = "";
-    html2canvas(document.getElementById("machine")).then(canvas => {
-        canvas.toBlob(function (blob) {
-            saveAs(blob, "losowanko_" + losowania + ".png");
-        });
-    });
-}
-
 function setVolume(value) {
     a1.volume = value;
     a2.volume = value;
@@ -72,6 +62,7 @@ function preview() {
     });
     document.getElementById("caption").innerHTML = "Kliknij prawym przyciskiem myszy i wybierz jedną z opcji";
 }
+
 function losu_start() {
     if (started == false) {
         started = true;
@@ -93,6 +84,35 @@ function losu_start() {
     };
 }
 
+function generateImage() {
+    losu_start();
+    document.getElementById("img01").innerHTML = "";
+    html2canvas(document.getElementById("machine")).then(canvas => {
+        canvas.toBlob(function (blob) {
+            saveAs(blob, "losowanko_" + losowania + ".png");
+        });
+    });
+}
+
+function pickRyjec() {
+    let ryjceIndex = Math.floor(getRandomArbitrary(0, ryjce.length));
+    return ryjec = ryjce[ryjceIndex];
+}
+
+function setRyjecLabel(ryjec) {
+    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjec + ".png'/>";
+}
+
+function setRyjecNameLabel(ryjec) {
+    ryjceDiv.innerHTML += `<div class="row"><p>${ryjec}</p></div>`;
+}
+
+function generateRyjecMetaImage() {
+    let ryjec = pickRyjec();
+    setRyjecLabel(ryjec);
+    setRyjecNameLabel(ryjec);
+}
+
 function losowanko() {
     a2.play();
 
@@ -105,7 +125,7 @@ function losowanko() {
     if (los3) {
         p3.style.width = ((time - 100) / 20) * 100 + "%";
     }
-    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjce[Math.floor(getRandomArbitrary(0, ryjce.length))] + ".png'/>";
+    setRyjecLabel(pickRyjec());
     time += 1;
     if (time == 80) {
         p1.style.width = "100%";
@@ -124,6 +144,7 @@ function losowanko() {
         setTimeout(losowanko, lottSpeed);
     }
     else {
+        setRyjecNameLabel(ryjec);
         progress.innerHTML = "losowanko zakonczone, jeszcze raz?";
         a3.play();
         a2.pause();
@@ -137,3 +158,4 @@ function losowanko() {
 modal_close.onclick = function () {
     modal.style.display = "none";
 }
+
