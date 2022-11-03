@@ -12,6 +12,8 @@ function pickRyjec() {
 function generateRandomRyjecMeta() {
     let ryjec = pickRyjec();
     let ryjecPath = `./img/${ryjec}.png`;
+    document.metaImage = ryjecPath;
+    document.metaTitle = `dzisiaj daily prowadzi ${ryjec}`;
     let metaImage = document.getElementsByTagName('meta').namedItem('og:image');
     !!metaImage && metaImage.setAttribute('content', ryjecPath);
     let metaTitle = document.getElementsByTagName('meta').namedItem('og:title');
