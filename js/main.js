@@ -4,7 +4,7 @@
 
 var w1 = [];
 var w2 = [];
-var ryjce = ["artur", "wojtek", "bartek", "ula", "gustaw", "kacper", "jedrzej", "mikolaj", "yarek"];
+var ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
 $.ajaxSetup({
     async: false
 });
