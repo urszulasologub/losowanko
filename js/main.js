@@ -23,11 +23,8 @@ function setMetaTag(itemName, content) {
             allMetaElements[i].setAttribute('content', content); 
             break;
         } 
-    } 
-    allMetaElements = document.getElementsByTagName('meta');
+    }
 }
-
-generateRandomRyjecMeta();
 
 var w1 = [];
 var w2 = [];
