@@ -4,7 +4,7 @@
 
 var w1 = [];
 var w2 = [];
-var ryjce = ["szef", "kacper", "hed", "arasz", "jordan", "fanggotten", "michal", "panmateusz"];
+var ryjce = ["artur", "wojtek", "bartek", "ula", "gustaw", "kacper", "jedrzej", "mikolaj", "yarek"];
 $.ajaxSetup({
     async: false
 });
@@ -33,7 +33,6 @@ var p2 = document.getElementById("p2");
 var p3 = document.getElementById("p3");
 var ryjceDiv = document.getElementById("ryjce");
 var progress = document.getElementById("progress");
-var stats = document.getElementById("stats");
 
 if (localStorage.volume) {
     volume = Number(localStorage.volume);
@@ -44,7 +43,6 @@ if (localStorage.losowania) {
     losowania = Number(localStorage.losowania);
     specjalne = Number(localStorage.specjalne);
 }
-stats.innerHTML = "twoje losowania: " + losowania + ", wylosowałeś/aś " + specjalne + " specjalnych tematów";
 var started = false;
 
 function download() {
@@ -117,7 +115,7 @@ function losowanko() {
 	{
 		p3.style.width = ((time-100)/20)*100 + "%";
 	}
-    ryjceDiv.innerHTML = "temacik dla: <img height='100px' class='shadowed' src='img/" + ryjce[Math.floor(getRandomArbitrary(0, ryjce.length))] + ".png'/>";
+    ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjce[Math.floor(getRandomArbitrary(0, ryjce.length))] + ".png'/>";
     time += 1;
     if (time == 80)
 	{
@@ -145,7 +143,6 @@ function losowanko() {
         a2.currentTime = 0;
         started = false;
         losowania += 1;
-        stats.innerHTML = "twoje losowania: " + losowania + ", wylosowałeś/aś " + specjalne + " specjalnych tematów";
         localStorage.losowania = losowania;
         localStorage.specjalne = specjalne;
     }
