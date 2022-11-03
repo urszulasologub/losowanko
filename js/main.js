@@ -8,7 +8,7 @@ var ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", 
 $.ajaxSetup({
     async: false
 });
-$.getJSON("database.json", function(json) {
+$.getJSON("database.json", function (json) {
     w1 = json.w1;
     w2 = json.w2;
 });
@@ -49,7 +49,7 @@ function download() {
 
     document.getElementById("img01").innerHTML = "";
     html2canvas(document.getElementById("machine")).then(canvas => {
-        canvas.toBlob(function(blob) {
+        canvas.toBlob(function (blob) {
             saveAs(blob, "losowanko_" + losowania + ".png");
         });
     });
@@ -61,13 +61,6 @@ function setVolume(value) {
     a3.volume = value;
     a4.volume = value;
     localStorage.volume = value;
-}
-
-function info() {
-    modal.style.display = "block";
-    var div = document.getElementById("img01");
-    document.getElementById("img01").innerHTML = "<div id='about'><h1>o maszynie</h1>legendarna maszyna losujaca teraz dostepna w przegladarce";
-    document.getElementById("caption").innerHTML = "";
 }
 
 function preview() {
@@ -93,9 +86,9 @@ function losu_start() {
         los2 = true;
         los3 = true;
         time = 0;
-		p1.style.width = "0%";
-		p2.style.width = "0%";
-		p3.style.width = "0%";
+        p1.style.width = "0%";
+        p2.style.width = "0%";
+        p3.style.width = "0%";
         setTimeout(losowanko, 3300);
     };
 }
@@ -103,35 +96,29 @@ function losu_start() {
 function losowanko() {
     a2.play();
 
-    if (los1)
-	{
-		p1.style.width = (time/80)*100 + "%";
-	}
-    if (los2)
-	{
-		p2.style.width = ((time-80)/20)*100 + "%";
-	}
-    if (los3)
-	{
-		p3.style.width = ((time-100)/20)*100 + "%";
-	}
+    if (los1) {
+        p1.style.width = (time / 80) * 100 + "%";
+    }
+    if (los2) {
+        p2.style.width = ((time - 80) / 20) * 100 + "%";
+    }
+    if (los3) {
+        p3.style.width = ((time - 100) / 20) * 100 + "%";
+    }
     ryjceDiv.innerHTML = "daily prowadzi: <img height='100px' class='shadowed' src='img/" + ryjce[Math.floor(getRandomArbitrary(0, ryjce.length))] + ".png'/>";
     time += 1;
-    if (time == 80)
-	{
-		p1.style.width = "100%";
+    if (time == 80) {
+        p1.style.width = "100%";
         los1 = false;
-	}
-    if (time == 100)
-	{
-		p2.style.width = "100%";
+    }
+    if (time == 100) {
+        p2.style.width = "100%";
         los2 = false;
-	}
-    if (time == 120)
-	{
-		p3.style.width = "100%";
+    }
+    if (time == 120) {
+        p3.style.width = "100%";
         los3 = false;
-	}
+    }
     if (los3 == true) {
         progress.innerHTML = "trwa losowanko (" + Math.floor((time / 120) * 100) + "%)";
         setTimeout(losowanko, lottSpeed);
@@ -147,6 +134,6 @@ function losowanko() {
         localStorage.specjalne = specjalne;
     }
 }
-modal_close.onclick = function() {
+modal_close.onclick = function () {
     modal.style.display = "none";
 }
