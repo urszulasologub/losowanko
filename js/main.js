@@ -108,6 +108,7 @@ function setRyjecNameLabel(ryjec) {
 }
 
 function generateRyjecMetaImage() {
+    console.log('test');
     let ryjec = pickRyjec();
     setRyjecLabel(ryjec);
     setRyjecNameLabel(ryjec);
