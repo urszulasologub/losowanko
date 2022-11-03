@@ -11,7 +11,7 @@ function pickRyjec() {
 
 function generateRandomRyjecMeta() {
     let ryjec = pickRyjec();
-    let ryjecPath = `./img/${ryjec}.png`;
+    let ryjecPath = `./img/${ryjec.toLowerCase()}.png`;
     setMetaTag('og:image', ryjecPath);
     setMetaTag('og:title', `dzisiaj daily prowadzi ${ryjec}`);
 }
@@ -27,7 +27,7 @@ function setMetaTag(itemName, content) {
 }
 
 function getRyjecPath(ryjec) {
-    return `img/${ryjec}.png`;
+    return `img/${ryjec.toLowerCase()}.png`;
 };
 
 var w1 = [];
