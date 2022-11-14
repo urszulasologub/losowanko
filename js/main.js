@@ -2,16 +2,36 @@
 let b1_array = ['Godzina', '30 minut', '25 minut', '15 minut', '90 minut', '45 minut', '20 minut'];
 let b2_array = ['Po angielsku', 'Bez angielskich slow', 'Z kolorami daltonistow', 'Z francuskim akcentem'];
 let b3_array = ['Kontrybucja do maszyny losujacej *', 'Stawia kucaka nastepnej wylosowanej osobie', '5zl do budzetu polskiego wtorku *'];
+let time_limitations = [];
+let difficulty_modifiers = [];
+let penalties = [];
+let result_1, result_2, result_3;
 
-function pushDefaultToArray(array, amount, default_value) {
+function pushManyToArray(hash_array, amount, value, special_symbol) {
     for (let i = 0; i < amount; i++) {
-        array.push(default_value);
+        hash_array.push({
+            value: value,
+            special: special_symbol
+        });
     }
 }
 
-pushDefaultToArray(b1_array, 5, 'Bez limitu czasu');
-pushDefaultToArray(b2_array, 7, 'Bez utrudnien');
-pushDefaultToArray(b3_array, 5, 'Bez kary');
+function pushNormalQuestions(array, hash_array) {
+    for (let i = 0; i < array.length; i++) {
+        pushManyToArray(hash_array, 1, array[i], null);
+    }
+}
+
+function populateArrays() {
+    pushNormalQuestions(b1_array, time_limitations);
+    pushManyToArray(time_limitations, 5, 'Bez limitu czasu', '3w3');
+    pushNormalQuestions(b2_array, difficulty_modifiers);
+    pushManyToArray(difficulty_modifiers, 7, 'Bez utrudnien', '3w3');
+    pushNormalQuestions(b3_array, penalties);
+    pushManyToArray(penalties, 5, 'Bez kary', '3w3');
+};
+
+populateArrays();
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -148,15 +168,18 @@ function losowanko() {
     a2.play();
 
     if (los1) {
-        b1.innerHTML = b1_array[Math.floor(getRandomArbitrary(0, b1_array.length))];
+        result_1 = time_limitations[Math.floor(getRandomArbitrary(0, time_limitations.length))];
+        b1.innerHTML = result_1.value;
         p1.style.width = (time / 80) * 100 + "%";
     }
     if (los2) {
-        b2.innerHTML = b2_array[Math.floor(getRandomArbitrary(0, b2_array.length))];
+        result_2 = difficulty_modifiers[Math.floor(getRandomArbitrary(0, difficulty_modifiers.length))];
+        b2.innerHTML = result_2.value;
         p2.style.width = ((time - 80) / 20) * 100 + "%";
     }
     if (los3) {
-        b3.innerHTML = b3_array[Math.floor(getRandomArbitrary(0, b3_array.length))];
+        result_3 = penalties[Math.floor(getRandomArbitrary(0, penalties.length))];
+        b3.innerHTML = result_3.value;
         p3.style.width = ((time - 100) / 20) * 100 + "%";
     }
     let ryjec = pickRyjec();
@@ -177,11 +200,15 @@ function losowanko() {
     if (los3 == true) {
         progress.innerHTML = "trwa losowanko (" + Math.floor((time / 120) * 100) + "%)";
         setTimeout(losowanko, lottSpeed);
-    }
-    else {
+    } else {
         pushResultToHistory(ryjec);
         progress.innerHTML = "losowanko zakonczone, jeszcze raz?";
-        a3.play();
+        if (!!result_1 && !!result_1.special && result_1.special == result_2.special && result_2.special == result_3.special) {
+            a4.src = `sounds/${result_1.special}.mp3`;
+            a4.play();
+        } else {
+            a3.play();
+        }
         a2.pause();
         a2.currentTime = 0;
         started = false;
