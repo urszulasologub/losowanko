@@ -1,7 +1,7 @@
 ﻿let ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
 let b1_array = ['Godzina', '30 minut', '25 minut', '15 minut', '90 minut', '45 minut', '20 minut'];
 let b2_array = ['Po angielsku', 'Bez angielskich slow', 'Z kolorami daltonistow', 'Z francuskim akcentem'];
-let b3_array = ['Kontrybucja do maszyny losujacej', 'Stawia kucaka wylosowanej osobie', '5zl do budzetu polskiego wtorku'];
+let b3_array = ['Kontrybucja do maszyny losujacej *', 'Stawia kucaka nastepnej wylosowanej osobie', '5zl do budzetu polskiego wtorku *'];
 
 function pushDefaultToArray(array, amount, default_value) {
     for (let i = 0; i < amount; i++) {
