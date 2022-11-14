@@ -134,12 +134,12 @@ function setRyjec(ryjec) {
     ryjceDiv.innerHTML = `daily prowadzi: <img height='100px' class='shadowed' src='${ryjecPath}'/>`;
 }
 
-function pushRyjecToHistory(ryjec) {
+function pushResultToHistory(ryjec) {
     let ryjecPath = getRyjecPath(ryjec);
     let currentDate = new Date();
     ryjceListDiv.innerHTML += `
         <img height="25px" src="${ryjecPath}" />
-        ${draws_count}. ${ryjec} - ${currentDate.toLocaleTimeString()}
+        ${draws_count}. ${currentDate.toLocaleTimeString()}: ${ryjec} - ${b1.innerHTML} - ${b2.innerHTML} - ${b3.innerHTML}
         </br>
     `;
 }
@@ -179,7 +179,7 @@ function losowanko() {
         setTimeout(losowanko, lottSpeed);
     }
     else {
-        pushRyjecToHistory(ryjec);
+        pushResultToHistory(ryjec);
         progress.innerHTML = "losowanko zakonczone, jeszcze raz?";
         a3.play();
         a2.pause();
