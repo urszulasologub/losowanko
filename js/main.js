@@ -1,4 +1,17 @@
-﻿var ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
+﻿let ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
+let b1_array = ['Godzina', '30 minut', '25 minut', '15 minut', '90 minut', '45 minut', '20 minut'];
+let b2_array = ['Po angielsku', 'Bez angielskich slow', 'Z kolorami daltonistow', 'Z francuskim akcentem'];
+let b3_array = ['Kontrybucja do maszyny losujacej', 'Stawia kucaka wylosowanej osobie', '5zl do budzetu polskiego wtorku'];
+
+function pushDefaultToArray(array, amount, default_value) {
+    for (let i = 0; i < amount; i++) {
+        array.push(default_value);
+    }
+}
+
+pushDefaultToArray(b1_array, 5, 'Bez limitu czasu');
+pushDefaultToArray(b2_array, 7, 'Bez utrudnien');
+pushDefaultToArray(b3_array, 5, 'Bez kary');
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -55,6 +68,9 @@ var a1 = document.getElementById("a1");
 var a2 = document.getElementById("a2");
 var a3 = document.getElementById("a3");
 var a4 = document.getElementById("a4");
+var b1 = document.getElementById("b1");	
+var b2 = document.getElementById("b2");	
+var b3 = document.getElementById("b3");
 var p1 = document.getElementById("p1");
 var p2 = document.getElementById("p2");
 var p3 = document.getElementById("p3");
@@ -132,12 +148,15 @@ function losowanko() {
     a2.play();
 
     if (los1) {
+        b1.innerHTML = b1_array[Math.floor(getRandomArbitrary(0, b1_array.length))];
         p1.style.width = (time / 80) * 100 + "%";
     }
     if (los2) {
+        b2.innerHTML = b2_array[Math.floor(getRandomArbitrary(0, b2_array.length))];
         p2.style.width = ((time - 80) / 20) * 100 + "%";
     }
     if (los3) {
+        b3.innerHTML = b3_array[Math.floor(getRandomArbitrary(0, b3_array.length))];
         p3.style.width = ((time - 100) / 20) * 100 + "%";
     }
     let ryjec = pickRyjec();

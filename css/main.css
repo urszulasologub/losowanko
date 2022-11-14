@@ -169,9 +169,12 @@ textarea {
     text-decoration: none;
     cursor: pointer;
 }
+#placeholder {
+    margin: auto;
+    color: rgb(81, 81, 102);
+}
 #b1 {
 	margin: auto;
-	font-size: 80px;
 }
 #b2{
 	margin: auto;
