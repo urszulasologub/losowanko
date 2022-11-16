@@ -28,7 +28,7 @@ function populateArrays() {
     pushNormalQuestions(b2_array, difficulty_modifiers);
     pushManyToArray(difficulty_modifiers, 7, 'Bez utrudnien', '3w3');
     pushNormalQuestions(b3_array, penalties);
-    pushManyToArray(penalties, 5, 'Bez kary', '3w3');
+    pushManyToArray(penalties, 2, 'Bez kary', '3w3');
 };
 
 populateArrays();
