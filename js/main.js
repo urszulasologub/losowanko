@@ -2,9 +2,9 @@
 let b1_array = ['Godzina', '30 minut', '25 minut', '15 minut', '90 minut', '45 minut', '20 minut', '35 minut', '40 minut'];
 let b2_array = ['Po angielsku', 'Bez angielskich slow', 'Z kolorami daltonistow', 'Z francuskim akcentem'];
 let b3_array = [
-    'Kontrybucja do maszyny losujacej *',
+    'Kontrybucja do maszyny losujacej',
     'Stawia kucaka nastepnej wylosowanej osobie',
-    '5zl do budzetu polskiego wtorku *',
+    '10zl do budzetu polskiego wtorku',
     '+1 shot śliwowicy na nastepnej integracji',
     'Musisz rzucić zalosny tekst na podryw do partnera/partnerki kogoś z teamu przy najblizszej mozliwej okazji'
 ];
