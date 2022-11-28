@@ -1,7 +1,13 @@
 ﻿let ryjce = ["Artur", "Wojtek", "Bartek", "Ula", "Gustaw", "Kacper", "Jedrzej", "Mikolaj", "Yarek"];
 let b1_array = ['Godzina', '30 minut', '25 minut', '15 minut', '90 minut', '45 minut', '20 minut', '35 minut', '40 minut'];
 let b2_array = ['Po angielsku', 'Bez angielskich slow', 'Z kolorami daltonistow', 'Z francuskim akcentem'];
-let b3_array = ['Kontrybucja do maszyny losujacej *', 'Stawia kucaka nastepnej wylosowanej osobie', '5zl do budzetu polskiego wtorku *', '+1 shot śliwowicy na nastepnej integracji'];
+let b3_array = [
+    'Kontrybucja do maszyny losujacej *',
+    'Stawia kucaka nastepnej wylosowanej osobie',
+    '5zl do budzetu polskiego wtorku *',
+    '+1 shot śliwowicy na nastepnej integracji',
+    'Musisz rzucić zalosny tekst na podryw do partnera/partnerki kogoś z teamu przy najblizszej mozliwej okazji'
+];
 let time_limitations = [];
 let difficulty_modifiers = [];
 let penalties = [];
@@ -24,9 +30,9 @@ function pushNormalQuestions(array, hash_array) {
 
 function populateArrays() {
     pushNormalQuestions(b1_array, time_limitations);
-    pushManyToArray(time_limitations, 5, 'Bez limitu czasu', '3w3');
+    pushManyToArray(time_limitations, 3, 'Bez limitu czasu', '3w3');
     pushNormalQuestions(b2_array, difficulty_modifiers);
-    pushManyToArray(difficulty_modifiers, 7, 'Bez utrudnien', '3w3');
+    pushManyToArray(difficulty_modifiers, 5, 'Bez utrudnien', '3w3');
     for (let i = 0; i < 5; i++) {
         pushNormalQuestions(b3_array, penalties);       // Because we want to make an option without a penalty much rarer
     }
