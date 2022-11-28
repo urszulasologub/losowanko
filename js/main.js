@@ -32,7 +32,7 @@ function populateArrays() {
     pushNormalQuestions(b1_array, time_limitations);
     pushManyToArray(time_limitations, 3, 'Bez limitu czasu', '3w3');
     pushNormalQuestions(b2_array, difficulty_modifiers);
-    pushManyToArray(difficulty_modifiers, 5, 'Bez utrudnien', '3w3');
+    pushManyToArray(difficulty_modifiers, 3, 'Bez utrudnien', '3w3');
     for (let i = 0; i < 5; i++) {
         pushNormalQuestions(b3_array, penalties);       // Because we want to make an option without a penalty much rarer
     }
