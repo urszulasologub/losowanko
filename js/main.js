@@ -6,7 +6,8 @@ let b3_array = [
     'Stawia kucaka nastepnej wylosowanej osobie',
     '10zl do budzetu polskiego wtorku',
     '+1 shot śliwowicy na nastepnej integracji',
-    'Musisz rzucić zalosny tekst na podryw do partnera/partnerki kogoś z teamu przy najblizszej mozliwej okazji'
+    'Musisz rzucić zalosny tekst na podryw do partnera/partnerki kogoś z teamu przy najblizszej mozliwej okazji',
+    'Musi recytować wierszyk'
 ];
 let time_limitations = [];
 let difficulty_modifiers = [];
